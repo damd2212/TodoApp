@@ -16,8 +16,11 @@
         {{task.title}}
       </ion-item>
       <ion-item-options side="start" (ionSwipe)="eliminarTarea(slidingItem, task)">
-          <button ion-button icon-only (click)="markAsDone(slidingItem, task)" color="secondary">
+          <button ion-button icon-only (click)="markAs(slidingItem, task)" color="secondary" *ngIf="task.status === 'open'">
             <ion-icon name="checkmark"></ion-icon>
+          </button>
+          <button ion-button icon-only (click)="markAs(slidingItem, task)" color="secondary" *ngIf="task.status === 'done'" >
+            <ion-icon name="close"></ion-icon>
           </button>
           <button ion-button icon-only expandable (click)="eliminarTarea(slidingItem, task)" color="danger">
             <ion-icon name="trash"></ion-icon>
